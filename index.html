@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>Rubik's Race</title>
+    <style>
+        canvas {
+            border: 5px solid black;
+        }
+        #goaldisplay{
+            position: relative;
+            left: 100;
+            width: 150;
+            height: 150;
+        }
+        #yourboard{
+            width: 500;
+            height: 500;
+        }
+        #oppboard{
+            position: relative;
+            left: 100;
+            width: 300;
+            height: 300;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <!-- <label for='yourboard'>YOUR BOARD</label> -->
+    <canvas id="yourboard"></canvas>
+    <canvas id='oppboard'></canvas>
+    <canvas id='goaldisplay'></canvas>
+    <div id='menu'>
+        <input type='text' id='roomname' placeholder='choose a room name'>
+        <button id='join'>CREATE/JOIN PRIVATE ROOM</button>
+    </div>
+</body>
+<script src="/static/game.js"></script>
+
+</html>
