@@ -2,8 +2,7 @@ var socket = io();
 
 socket.emit('new player'); // DOES NOTHING (but probably will need once i make username update)
 
-//TODO: graphics update, use more realistic squares instead of filling rects, animate when a move is made (realisticness)
-//better canvas locations, labels for each canvas
+//better canvas locations
 //button to "slam down the border" when you think you have won
 
 var menu = document.getElementById('menu');
@@ -13,9 +12,10 @@ var join = document.getElementById('join');
 var goaldisplay = document.getElementById('goaldisplay');
 var yourboard = document.getElementById('yourboard');
 var oppboard = document.getElementById('oppboard');
-goaldisplay.style.display = 'none';
-yourboard.style.display = 'none';  
-oppboard.style.display = 'none'; // hide for menu to show at the start
+let labels = document.getElementsByTagName('label');
+for (var i=0; i<labels.length; i++){
+    labels[i].style.display = 'none'// hide for menu to show at the start
+} 
 goaldisplay.width = 150;
 goaldisplay.height = 150;
 yourboard.width = 500;
@@ -33,9 +33,9 @@ oppboardcontext.strokeStyle = 'gray';
 join.onclick = function () {
     menu.style.display = 'none';
     socket.emit('joinroom', roomname.value);
-    yourboard.style.display = 'inline';
-    goaldisplay.style.display = 'inline';
-    oppboard.style.display = 'inline';
+    for (var i=0; i<labels.length; i++){
+        labels[i].style.display = 'inline-flex'
+    }
 }
 
 var color = ['white', 'orange', 'yellow', 'red', 'green', 'blue'];
